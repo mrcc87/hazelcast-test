@@ -12,8 +12,8 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 
 public class HazelCastManager {
-	 private static final String SSM_HAZELCAST_CONFIG_FILE_NAME = "ssm-hazelcast-configuration.xml";
-	  private static final String SSM_HAZELCAST_INSTANCE_NAME = "SSM_HAZELCAST_INSTANCE";
+	 private static final String HAZELCAST_CONFIG_FILE_NAME = "hazelcast-configuration.xml";
+	  private static final String HAZELCAST_INSTANCE_NAME = "HAZELCAST_INSTANCE_NAME";
 	  private static HazelcastInstance HZ_INSTANCE;
 	  
 	  static
@@ -25,10 +25,10 @@ public class HazelCastManager {
 	    	//System.out.println("ClassLoader ----------------> " + HazelCastManager.class.getClassLoader().getResource("ssm-hazelcast-configuration.xml"));
 	      //hazelcastConfigurationFilePath = HazelCastManager.class.getClassLoader().getResource("ssm-hazelcast-configuration.xml").getPath();
 	      //is = new FileInputStream(hazelcastConfigurationFilePath);
-	      is = new FileInputStream("/ltm/rt/jboss/jboss-eap-6.3/modules/com/igt/solution/ssm/hazelcast/configuration/main/ssm-hazelcast-configuration.xml");
+	      is = new FileInputStream("path/to/hazelcast/configuration/file");
 	      System.out.println("Hazelcast configuration file path -----> " +hazelcastConfigurationFilePath);
 	      Config hazelcastSSMConfiguration = new XmlConfigBuilder(is).build();
-	      hazelcastSSMConfiguration.setInstanceName("SSM_HAZELCAST_INSTANCE");
+	      hazelcastSSMConfiguration.setInstanceName(HAZELCAST_INSTANCE_NAME);
 	      System.out.println("Creating Hazelcast instance");
 	      HZ_INSTANCE = Hazelcast.getOrCreateHazelcastInstance(hazelcastSSMConfiguration);
 	      System.out.println("instance created");
